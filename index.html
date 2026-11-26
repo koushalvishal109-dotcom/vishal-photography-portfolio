@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141512">
+  <meta name="description" content="A personal photography portfolio by Vishal. A collection of places, light, architecture, streets and everyday moments across India and Nepal.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vishal — Photography">
+  <meta property="og:description" content="Places, light and everyday moments, photographed by Vishal.">
+  <meta property="og:image" content="images/03-valley-of-fog.webp">
+  <title>Vishal — Photography</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" as="image" href="images/03-valley-of-fog.webp" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script src="photos.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Vishal, home">VISHAL<span class="wordmark-dot">.</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="#collections">Selected work</a>
+      <a href="#archive">All photographs</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="images/03-valley-of-fog.webp" alt="A quiet valley layered with morning mist and distant hills in Nepal" fetchpriority="high" decoding="async">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow hero-eyebrow">A PERSONAL PHOTOGRAPHIC PORTFOLIO</p>
+        <h1 id="hero-title">Photographs<br><em>by Vishal.</em></h1>
+        <p class="hero-summary">Places, light and the everyday moments<br class="desktop-break"> that make us pause.</p>
+        <a class="text-link hero-link" href="#collections">Explore the work <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-bottom" aria-hidden="true">
+        <span>INDIA · NEPAL</span>
+        <span>LANDSCAPE / PLACE / STREET / ARCHITECTURE</span>
+        <span>SCROLL TO EXPLORE ↓</span>
+      </div>
+    </section>
+
+    <section class="intro section-shell" aria-label="Introduction">
+      <p class="eyebrow">A WAY OF LOOKING</p>
+      <p class="intro-copy">A growing collection of places and passing moments — <span>noticed along the way, and kept in a frame.</span></p>
+    </section>
+
+    <section class="collections section-shell" id="collections">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / SELECTED WORK</p>
+          <h2>Collections<span class="heading-period">.</span></h2>
+        </div>
+        <p class="section-note">A few places, each with its own rhythm, details and atmosphere.</p>
+      </div>
+      <div class="collection-grid" id="collection-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="archive" id="archive">
+      <div class="section-shell">
+        <div class="section-heading archive-heading">
+          <div>
+            <p class="eyebrow">02 / THE FULL ARCHIVE</p>
+            <h2>All photographs<span class="heading-period">.</span></h2>
+          </div>
+          <p class="section-note"><span id="photo-count">30 photographs</span><br>Choose a collection or open a frame.</p>
+        </div>
+        <div class="filters" id="filters" aria-label="Filter photographs">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Everything</button>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+        <p class="empty-state" id="empty-state" hidden>No photographs in this collection yet.</p>
+      </div>
+    </section>
+
+    <section class="about section-shell" id="about">
+      <div class="about-heading">
+        <p class="eyebrow">03 / A LITTLE ABOUT ME</p>
+        <h2>Learning to<br><em>look closer.</em></h2>
+      </div>
+      <div class="about-copy">
+        <p class="about-lead">I’m Vishal. I’m drawn to the character of places — the rhythm of a street, the lines of old architecture, a change in weather, or a small detail that might otherwise pass unnoticed.</p>
+        <p>This portfolio is a record of what catches my attention while exploring and travelling. The photographs move between landscapes, streets and built spaces, held together by a curiosity about the places we pass through and the moments that stay with us.</p>
+        <p class="about-signoff">Thanks for taking a look.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-inner section-shell">
+        <div>
+          <p class="eyebrow">04 / GET IN TOUCH</p>
+          <h2>Let’s start<br><em>a conversation.</em></h2>
+        </div>
+        <div class="contact-copy">
+          <p>For collaborations, print enquiries or just to say hello, I’d be glad to hear from you.</p>
+          <p class="contact-note">Your email and social links can be added here when you’re ready to publish.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <a class="footer-name" href="#top">VISHAL<span>.</span></a>
+    <p>Photography · India & Nepal</p>
+    <a class="back-top" href="#top">Back to top ↑</a>
+    <small>© <span id="current-year">2026</span> Vishal. All photographs are the photographer’s own.</small>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" aria-hidden="true" hidden>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close photograph">×</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photograph">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-image" src="" alt="">
+      <figcaption><span id="lightbox-title"></span><span id="lightbox-counter"></span></figcaption>
+    </figure>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next" type="button" aria-label="Next photograph">›</button>
+  </div>
+</body>
+</html>
