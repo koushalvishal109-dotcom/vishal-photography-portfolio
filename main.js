@@ -2,6 +2,18 @@
   'use strict';
   const photos = window.PORTFOLIO_PHOTOS || [];
   const collections = window.PORTFOLIO_COLLECTIONS || [];
+  photos.forEach(photo => {
+  photo.src = photo.src.replace(/^images\//, "");
+});
+
+collections.forEach(collection => {
+  collection.cover = collection.cover.replace(/^images\//, "");
+});
+
+const hero = document.querySelector(".hero-image");
+if (hero) {
+  hero.src = hero.getAttribute("src").replace(/^images\//, "");
+}
   const collectionGrid = document.getElementById('collection-grid');
   const photoGrid = document.getElementById('photo-grid');
   const filters = document.getElementById('filters');
