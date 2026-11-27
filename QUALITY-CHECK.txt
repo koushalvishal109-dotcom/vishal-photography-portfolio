@@ -1,35 +1,31 @@
-VISHAL — PERSONAL PHOTOGRAPHY PORTFOLIO
-=======================================
+CHOTU FRAME JOURNAL
+===================
 
 Asset and content checks
 ------------------------
-- 30 photographs are included in the images folder.
-- All 30 WebP files were opened and verified successfully.
-- All image paths referenced in the page and photo data resolve.
+- 30 WebP photographs are stored beside index.html.
+- All 30 photo filenames are referenced from the repository root.
 - Six collections are defined; their displayed frame counts total 30.
 - Collection labels use Agra, Shimla, Qutub Minar, Delhi Streets,
-  Kathmandu, and Nepal — Hills and Fields.
-- No former studio or brand name is used in the page.
-- No former Patan, Deer Park, or Garden in Green labels remain.
-- Internal page-navigation anchors resolve to existing page elements.
+  Kathmandu, and Nepal: Hills and Fields.
+- Public contact details use chotu.framejournal@gmail.com and
+  @chotu.framejournal.
+- The portfolio identity is Chotu Frame Journal, with Vishal credited
+  personally as the photographer behind the journal.
+- No em dash characters are used in visible website copy.
 
-Code checks
------------
-- main.js and photos.js pass Node syntax checks.
-- styles.css parses without top-level CSS syntax errors.
-- The page uses plain HTML, CSS and JavaScript with no build step,
-  third-party JavaScript, remote font, or required paid service.
-
-Responsive and interaction notes
---------------------------------
+Code and layout checks
+----------------------
+- The gallery uses an ordered CSS grid rather than CSS multi-column flow.
+- Photo cards calculate their row spans as image dimensions become available,
+  preserving the gallery's source order while keeping natural photo proportions.
 - Responsive breakpoints are defined for desktop, tablet and mobile.
 - A mobile navigation toggle, collection filters and keyboard-accessible
   photograph viewer are included.
-- A rendered browser/device check could not be completed in this runtime;
-  please preview on your own browser before publishing.
+- The website uses plain HTML, CSS and JavaScript with no build step,
+  third-party JavaScript, remote font or required paid service.
 
-Still to personalise before public launch
-------------------------------------------
-- Add the email address and social links you want to make public.
-- Review the captions and the About text in your own voice.
-- Confirm the final image order and collection choices.
+Final visual check
+------------------
+- Preview the page on desktop and mobile before public launch.
+- Confirm the gallery layout and contact links in the live browser.
