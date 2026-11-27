@@ -4,35 +4,35 @@ CHOTU FRAME JOURNAL
 Content and identity
 --------------------
 - The public identity is Chotu Frame Journal.
-- The homepage introduces the work as a personal point of view.
+- The homepage presents the archive as a personal point of view.
 - The About section introduces Vishal, also known as Chotu.
 - Public contact details use chotu.framejournal@gmail.com and
   @chotu.framejournal.
-- All 30 photographs have individual captions written for the image shown.
+- All 30 photographs have individual, scene-specific captions.
 - No em dash characters are used in visible site copy.
 
-Photo assets
-------------
+Photo assets and performance
+----------------------------
 - 30 original WebP photographs remain at the repository root.
-- GitHub Actions generates smaller 960px maximum-side WebP thumbnails
-  in /thumbnails at quality 72.
-- The archive and collection cards use thumbnails.
-- The lightbox continues to use the original full-resolution photographs.
-- Each photo record stores its original width and height, so the browser
-  reserves the image's natural aspect ratio before the thumbnail downloads.
+- GitHub Actions generates 960px maximum-side WebP thumbnails at quality 72.
+- Archive and collection cards use thumbnail files.
+- The lightbox continues to use original full-resolution photographs.
+- Actual image dimensions are read from each original file during generation.
+  Width and height attributes reserve each image's natural ratio before
+  its thumbnail downloads.
+- Archive images are lazy-loaded, asynchronously decoded and low priority.
 
-Layout and performance
-----------------------
+Layout
+------
 - The archive uses a conventional responsive CSS Grid.
 - There is no JavaScript masonry sizing, ResizeObserver, or image-load-driven
   card repositioning.
-- Archive images are lazy-loaded, asynchronously decoded and low priority.
 - Responsive breakpoints are defined for desktop, tablet and mobile.
 - Collection filters and keyboard-accessible photograph viewing remain.
 
 Final browser checks
 --------------------
-- Scroll the desktop and mobile archive while thumbnails load.
+- Scroll desktop and mobile archives while thumbnails load.
 - Check that no cards jump or overlap.
-- Check headline placement, wrapping and readability over the hero image.
-- Check every caption and contact link before the production merge.
+- Check hero title placement and wrapping over the open sky.
+- Check all captions and contact links before production merge.
