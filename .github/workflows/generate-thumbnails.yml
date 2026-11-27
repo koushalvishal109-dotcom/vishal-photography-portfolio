@@ -1,0 +1,43 @@
+name: Generate portfolio thumbnails
+
+on:
+  push:
+    branches:
+      - gallery-order-refinement
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  thumbnails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio branch
+        uses: actions/checkout@v4
+        with:
+          ref: gallery-order-refinement
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install image tools
+        run: python -m pip install Pillow
+
+      - name: Generate optimized thumbnails
+        run: python tools/generate_thumbnails.py
+
+      - name: Commit generated thumbnails and verified dimensions
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos.js thumbnails/
+          if git diff --cached --quiet; then
+            echo "Thumbnails are already current."
+          else
+            git commit -m "Generate optimized portfolio thumbnails"
+            git push origin HEAD:gallery-order-refinement
+          fi
