@@ -13,7 +13,7 @@ QUALITY = 72
 
 text = PHOTO_DATA.read_text(encoding="utf-8")
 source_pattern = re.compile(
-    r'src:"([^"]+\\.webp)"(?:,thumb:"[^"]+",width:\\d+,height:\\d+)?'
+    r'src:"([^"]+\.webp)"(?:,thumb:"[^"]+",width:\d+,height:\d+)?'
 )
 sources = source_pattern.findall(text)
 if len(sources) != 30:
@@ -54,7 +54,7 @@ def add_collection_thumb(match):
     return f'cover:"{filename}",thumb:"thumbnails/{filename}"'
 
 text = re.sub(
-    r'cover:"([^"]+\\.webp)"(?:,thumb:"[^"]+")?',
+    r'cover:"([^"]+\.webp)"(?:,thumb:"[^"]+")?',
     add_collection_thumb,
     text
 )
