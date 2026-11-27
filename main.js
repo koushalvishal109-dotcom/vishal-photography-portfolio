@@ -43,54 +43,17 @@
     });
   }
 
-  function sizePhotoCards() {
-    const gridStyle = getComputedStyle(photoGrid);
-    const rowHeight = Number.parseFloat(gridStyle.gridAutoRows) || 8;
-    const rowGap = Number.parseFloat(gridStyle.rowGap) || 12;
-
-    photoGrid.querySelectorAll('.photo-card').forEach(card => {
-      const image = card.querySelector('img');
-      const caption = card.querySelector('figcaption');
-      if (!image || !caption) return;
-
-      // Width and height attributes reserve the image's exact aspect ratio
-      // before its lazy-loaded file arrives. Sizing therefore does not depend
-      // on image load events and cannot move cards while scrolling.
-      const imageHeight = image.getBoundingClientRect().height;
-      const captionHeight = caption.getBoundingClientRect().height;
-      if (!imageHeight || !captionHeight) return;
-
-      const contentHeight = imageHeight + captionHeight;
-      const rowSpan = Math.max(1, Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap)));
-      const rowRule = `span ${rowSpan}`;
-      if (card.style.gridRowEnd !== rowRule) card.style.gridRowEnd = rowRule;
-    });
-  }
-
-  let galleryResizeFrame = 0;
-  function scheduleGallerySizing() {
-    if (galleryResizeFrame) cancelAnimationFrame(galleryResizeFrame);
-    galleryResizeFrame = requestAnimationFrame(() => {
-      sizePhotoCards();
-      galleryResizeFrame = 0;
-    });
-  }
-
-  window.addEventListener('resize', scheduleGallerySizing, { passive: true });
-
   function renderPhotos() {
     visiblePhotos = activeFilter === 'all' ? photos.slice() : photos.filter(photo => photo.key === activeFilter);
     photoGrid.innerHTML = visiblePhotos.map((photo, index) => `
       <figure class="photo-card" data-index="${index}" tabindex="0" role="button" aria-label="Open ${photo.title}">
-        <img src="${photo.src}" width="${photo.width}" height="${photo.height}" alt="${photo.alt}" loading="lazy" decoding="async" fetchpriority="low">
+        <div class="photo-thumb">
+          <img src="${photo.src}" alt="${photo.alt}" loading="lazy" decoding="async" fetchpriority="low">
+        </div>
         <figcaption><strong>${photo.title}</strong><span>${photo.collection}</span></figcaption>
       </figure>`).join('');
     photoCount.textContent = `${visiblePhotos.length} ${visiblePhotos.length === 1 ? 'photograph' : 'photographs'}`;
     emptyState.hidden = visiblePhotos.length !== 0;
-
-    // The browser already knows each image's aspect ratio, so one sizing pass
-    // reserves all gallery positions before the images begin loading.
-    scheduleGallerySizing();
 
     photoGrid.querySelectorAll('.photo-card').forEach(card => {
       const open = () => openLightbox(Number(card.dataset.index));
