@@ -24,7 +24,7 @@
   function renderCollections() {
     collectionGrid.innerHTML = collections.map((collection, index) => `
       <a class="collection-card" href="#archive" data-collection="${collection.key}" aria-label="View ${collection.name} photographs">
-        <div class="collection-image"><img src="${collection.cover}" alt="${collection.name} collection, ${collection.subtitle}" loading="lazy" decoding="async"></div>
+        <div class="collection-image"><img src="${collection.thumb || collection.cover}" alt="${collection.name} collection, ${collection.subtitle}" loading="lazy" decoding="async" fetchpriority="low"></div>
         <div class="collection-meta"><span>${String(index + 1).padStart(2, '0')} / ${collection.type}</span><span>${collection.count} frames</span></div>
         <h3 class="collection-title">${collection.name}</h3>
         <p class="collection-description">${collection.description}</p>
@@ -48,9 +48,12 @@
     photoGrid.innerHTML = visiblePhotos.map((photo, index) => `
       <figure class="photo-card" data-index="${index}" tabindex="0" role="button" aria-label="Open ${photo.title}">
         <div class="photo-thumb">
-          <img src="${photo.src}" alt="${photo.alt}" loading="lazy" decoding="async" fetchpriority="low">
+          <img src="${photo.thumb || photo.src}" width="${photo.width}" height="${photo.height}" alt="${photo.alt}" loading="lazy" decoding="async" fetchpriority="low">
         </div>
-        <figcaption><strong>${photo.title}</strong><span>${photo.collection}</span></figcaption>
+        <figcaption>
+          <div class="photo-card-heading"><strong>${photo.title}</strong><span>${photo.collection}</span></div>
+          <p class="photo-caption">${photo.caption || ""}</p>
+        </figcaption>
       </figure>`).join('');
     photoCount.textContent = `${visiblePhotos.length} ${visiblePhotos.length === 1 ? 'photograph' : 'photographs'}`;
     emptyState.hidden = visiblePhotos.length !== 0;
@@ -80,6 +83,7 @@
     lightboxImage.src = photo.src;
     lightboxImage.alt = photo.alt;
     lightboxTitle.textContent = `${photo.title} · ${photo.collection}`;
+    document.getElementById('lightbox-description').textContent = photo.caption || '';
     lightboxCounter.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(visiblePhotos.length).padStart(2, '0')}`;
   }
 
