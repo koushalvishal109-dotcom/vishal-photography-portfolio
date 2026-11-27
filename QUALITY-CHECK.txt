@@ -1,37 +1,38 @@
 CHOTU FRAME JOURNAL
 ===================
 
-Asset and content checks
-------------------------
-- 30 WebP photographs are stored beside index.html.
-- All photo data references resolve to the original repository-root files.
-- Six collections are defined; their displayed frame counts total 30.
+Content and identity
+--------------------
+- The public identity is Chotu Frame Journal.
+- The homepage introduces the work as a personal point of view.
+- The About section introduces Vishal, also known as Chotu.
 - Public contact details use chotu.framejournal@gmail.com and
   @chotu.framejournal.
-- The portfolio identity is Chotu Frame Journal, with Vishal credited
-  personally as the photographer behind the journal.
-- No em dash characters are used in the website copy.
+- All 30 photographs have individual captions written for the image shown.
+- No em dash characters are used in visible site copy.
 
-Gallery layout
---------------
+Photo assets
+------------
+- 30 original WebP photographs remain at the repository root.
+- GitHub Actions generates smaller 960px maximum-side WebP thumbnails
+  in /thumbnails at quality 72.
+- The archive and collection cards use thumbnails.
+- The lightbox continues to use the original full-resolution photographs.
+- Each photo record stores its original width and height, so the browser
+  reserves the image's natural aspect ratio before the thumbnail downloads.
+
+Layout and performance
+----------------------
 - The archive uses a conventional responsive CSS Grid.
-- Every archive thumbnail has a fixed 4:5 image window. Images are cropped
-  inside the window with object-fit: cover.
-- The browser reserves the full thumbnail window before a lazy image loads.
-- There is no JavaScript masonry sizing, row-span calculation, ResizeObserver,
-  or image-load-driven layout change.
-- Selecting a thumbnail opens the original full-size photograph in the
-  existing lightbox, without the archive crop.
+- There is no JavaScript masonry sizing, ResizeObserver, or image-load-driven
+  card repositioning.
+- Archive images are lazy-loaded, asynchronously decoded and low priority.
+- Responsive breakpoints are defined for desktop, tablet and mobile.
+- Collection filters and keyboard-accessible photograph viewing remain.
 
-Performance
------------
-- Archive images remain lazy-loaded, asynchronously decoded and low priority.
-- The repository still stores full-size original images. Lightweight
-  derivative thumbnails should be generated from the original assets as a
-  separate optimization step.
-
-Final visual check
-------------------
-- Preview on desktop and mobile.
-- Scroll the full archive and check that rows stay aligned during loading.
-- Confirm important subjects remain well framed in the 4:5 thumbnails.
+Final browser checks
+--------------------
+- Scroll the desktop and mobile archive while thumbnails load.
+- Check that no cards jump or overlap.
+- Check headline placement, wrapping and readability over the hero image.
+- Check every caption and contact link before the production merge.
