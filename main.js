@@ -82,7 +82,7 @@
     visiblePhotos = activeFilter === 'all' ? photos.slice() : photos.filter(photo => photo.key === activeFilter);
     photoGrid.innerHTML = visiblePhotos.map((photo, index) => `
       <figure class="photo-card" data-index="${index}" tabindex="0" role="button" aria-label="Open ${photo.title}">
-        <img src="${photo.src}" width="${photo.width}" height="${photo.height}" alt="${photo.alt}" loading="lazy" decoding="async">
+        <img src="${photo.src}" width="${photo.width}" height="${photo.height}" alt="${photo.alt}" loading="lazy" decoding="async" fetchpriority="low">
         <figcaption><strong>${photo.title}</strong><span>${photo.collection}</span></figcaption>
       </figure>`).join('');
     photoCount.textContent = `${visiblePhotos.length} ${visiblePhotos.length === 1 ? 'photograph' : 'photographs'}`;
