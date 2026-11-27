@@ -1,31 +1,38 @@
 CHOTU FRAME JOURNAL
 ===================
 
-Asset and content checks
-------------------------
-- 30 WebP photographs are stored beside index.html.
-- All 30 photo filenames are referenced from the repository root.
-- Six collections are defined; their displayed frame counts total 30.
-- Collection labels use Agra, Shimla, Qutub Minar, Delhi Streets,
-  Kathmandu, and Nepal: Hills and Fields.
+Content and identity
+--------------------
+- The public identity is Chotu Frame Journal.
+- The homepage presents the archive as a personal point of view.
+- The About section introduces Vishal, also known as Chotu.
 - Public contact details use chotu.framejournal@gmail.com and
   @chotu.framejournal.
-- The portfolio identity is Chotu Frame Journal, with Vishal credited
-  personally as the photographer behind the journal.
-- No em dash characters are used in visible website copy.
+- All 30 photographs have individual, scene-specific captions.
+- No em dash characters are used in visible site copy.
 
-Code and layout checks
-----------------------
-- The gallery uses an ordered CSS grid rather than CSS multi-column flow.
-- Photo cards calculate their row spans as image dimensions become available,
-  preserving the gallery's source order while keeping natural photo proportions.
+Photo assets and performance
+----------------------------
+- 30 original WebP photographs remain at the repository root.
+- GitHub Actions generates 960px maximum-side WebP thumbnails at quality 72.
+- Archive and collection cards use thumbnail files.
+- The lightbox continues to use original full-resolution photographs.
+- Actual image dimensions are read from each original file during generation.
+  Width and height attributes reserve each image's natural ratio before
+  its thumbnail downloads.
+- Archive images are lazy-loaded, asynchronously decoded and low priority.
+
+Layout
+------
+- The archive uses a conventional responsive CSS Grid.
+- There is no JavaScript masonry sizing, ResizeObserver, or image-load-driven
+  card repositioning.
 - Responsive breakpoints are defined for desktop, tablet and mobile.
-- A mobile navigation toggle, collection filters and keyboard-accessible
-  photograph viewer are included.
-- The website uses plain HTML, CSS and JavaScript with no build step,
-  third-party JavaScript, remote font or required paid service.
+- Collection filters and keyboard-accessible photograph viewing remain.
 
-Final visual check
-------------------
-- Preview the page on desktop and mobile before public launch.
-- Confirm the gallery layout and contact links in the live browser.
+Final browser checks
+--------------------
+- Scroll desktop and mobile archives while thumbnails load.
+- Check that no cards jump or overlap.
+- Check hero title placement and wrapping over the open sky.
+- Check all captions and contact links before production merge.
