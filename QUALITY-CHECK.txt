@@ -4,10 +4,9 @@ CHOTU FRAME JOURNAL
 Asset and content checks
 ------------------------
 - 30 WebP photographs are stored beside index.html.
-- Photo data and hero image references use the repository-root filenames.
-- Six collections are defined; their displayed frame counts total 30.
-- Collection labels use Agra, Shimla, Qutub Minar, Delhi Streets,
-  Kathmandu, and Nepal: Hills and Fields.
+- Original pixel dimensions are recorded in photos.js for every photograph.
+- The browser reserves each image's aspect ratio before lazy loading begins.
+- All 30 photo filenames and six collection covers resolve to repository assets.
 - Public contact details use chotu.framejournal@gmail.com and
   @chotu.framejournal.
 - The portfolio identity is Chotu Frame Journal, with Vishal credited
@@ -16,12 +15,12 @@ Asset and content checks
 
 Code and layout checks
 ----------------------
-- The archive uses CSS Grid with explicit row spans calculated from
-  each loaded photograph's rendered height and caption height.
-- Grid auto-flow preserves the source order of photographs. Unlike CSS
-  multi-column flow, the layout does not fill columns by vertical order.
-- Image proportions remain natural. The grid is recalculated when image
-  dimensions or layout widths change.
+- The archive uses CSS Grid with row spans calculated before image loading.
+- Image sizing is based on the recorded width and height attributes, not
+  image load events or per-image ResizeObserver callbacks.
+- Gallery positions remain reserved while lazy-loaded images arrive.
+- Gallery sizing runs again only when the viewport is resized or a filter
+  is changed.
 - Responsive breakpoints are defined for desktop, tablet and mobile.
 - A mobile navigation toggle, collection filters and keyboard-accessible
   photograph viewer are included.
@@ -31,5 +30,5 @@ Code and layout checks
 Final visual check
 ------------------
 - Preview the page on desktop and mobile before public launch.
-- Confirm gallery spacing, contact links and headline wrapping in the browser.
-- Confirm the social preview image after the final public URL is selected.
+- Scroll the full archive while images lazy-load to confirm cards stay fixed.
+- Check gallery spacing and contact links in the browser.
