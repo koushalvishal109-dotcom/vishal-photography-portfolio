@@ -4,7 +4,7 @@ CHOTU FRAME JOURNAL
 Asset and content checks
 ------------------------
 - 30 WebP photographs are stored beside index.html.
-- All 30 photo filenames are referenced from the repository root.
+- Photo data and hero image references use the repository-root filenames.
 - Six collections are defined; their displayed frame counts total 30.
 - Collection labels use Agra, Shimla, Qutub Minar, Delhi Streets,
   Kathmandu, and Nepal: Hills and Fields.
@@ -12,13 +12,16 @@ Asset and content checks
   @chotu.framejournal.
 - The portfolio identity is Chotu Frame Journal, with Vishal credited
   personally as the photographer behind the journal.
-- No em dash characters are used in visible website copy.
+- No em dash characters are used in the website copy.
 
 Code and layout checks
 ----------------------
-- The gallery uses an ordered CSS grid rather than CSS multi-column flow.
-- Photo cards calculate their row spans as image dimensions become available,
-  preserving the gallery's source order while keeping natural photo proportions.
+- The archive uses CSS Grid with explicit row spans calculated from
+  each loaded photograph's rendered height and caption height.
+- Grid auto-flow preserves the source order of photographs. Unlike CSS
+  multi-column flow, the layout does not fill columns by vertical order.
+- Image proportions remain natural. The grid is recalculated when image
+  dimensions or layout widths change.
 - Responsive breakpoints are defined for desktop, tablet and mobile.
 - A mobile navigation toggle, collection filters and keyboard-accessible
   photograph viewer are included.
@@ -28,4 +31,5 @@ Code and layout checks
 Final visual check
 ------------------
 - Preview the page on desktop and mobile before public launch.
-- Confirm the gallery layout and contact links in the live browser.
+- Confirm gallery spacing, contact links and headline wrapping in the browser.
+- Confirm the social preview image after the final public URL is selected.
