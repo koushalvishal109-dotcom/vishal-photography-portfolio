@@ -2,18 +2,6 @@
   'use strict';
   const photos = window.PORTFOLIO_PHOTOS || [];
   const collections = window.PORTFOLIO_COLLECTIONS || [];
-  photos.forEach(photo => {
-  photo.src = photo.src.replace(/^images\//, "");
-});
-
-collections.forEach(collection => {
-  collection.cover = collection.cover.replace(/^images\//, "");
-});
-
-const hero = document.querySelector(".hero-image");
-if (hero) {
-  hero.src = hero.getAttribute("src").replace(/^images\//, "");
-}
   const collectionGrid = document.getElementById('collection-grid');
   const photoGrid = document.getElementById('photo-grid');
   const filters = document.getElementById('filters');
@@ -36,7 +24,7 @@ if (hero) {
   function renderCollections() {
     collectionGrid.innerHTML = collections.map((collection, index) => `
       <a class="collection-card" href="#archive" data-collection="${collection.key}" aria-label="View ${collection.name} photographs">
-        <div class="collection-image"><img src="${collection.cover}" alt="${collection.name} collection — ${collection.subtitle}" loading="lazy" decoding="async"></div>
+        <div class="collection-image"><img src="${collection.cover}" alt="${collection.name} collection, ${collection.subtitle}" loading="lazy" decoding="async"></div>
         <div class="collection-meta"><span>${String(index + 1).padStart(2, '0')} / ${collection.type}</span><span>${collection.count} frames</span></div>
         <h3 class="collection-title">${collection.name}</h3>
         <p class="collection-description">${collection.description}</p>
@@ -55,6 +43,25 @@ if (hero) {
     });
   }
 
+  function sizePhotoCard(card) {
+    if (!card) return;
+    const image = card.querySelector('img');
+    const caption = card.querySelector('figcaption');
+    if (!image || !caption || !image.complete || !image.naturalHeight) return;
+    const gridStyle = getComputedStyle(photoGrid);
+    const rowHeight = Number.parseFloat(gridStyle.gridAutoRows) || 8;
+    const rowGap = Number.parseFloat(gridStyle.rowGap) || 12;
+    const contentHeight = image.getBoundingClientRect().height + caption.getBoundingClientRect().height;
+    const rowSpan = Math.max(1, Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap)));
+    card.style.gridRowEnd = `span ${rowSpan}`;
+  }
+
+  const photoResizeObserver = 'ResizeObserver' in window
+    ? new ResizeObserver(entries => {
+        entries.forEach(entry => sizePhotoCard(entry.target.closest('.photo-card')));
+      })
+    : null;
+
   function renderPhotos() {
     visiblePhotos = activeFilter === 'all' ? photos.slice() : photos.filter(photo => photo.key === activeFilter);
     photoGrid.innerHTML = visiblePhotos.map((photo, index) => `
@@ -66,6 +73,14 @@ if (hero) {
     emptyState.hidden = visiblePhotos.length !== 0;
 
     photoGrid.querySelectorAll('.photo-card').forEach(card => {
+      const image = card.querySelector('img');
+      const caption = card.querySelector('figcaption');
+      [image, caption].forEach(target => {
+        if (photoResizeObserver) photoResizeObserver.observe(target);
+      });
+      image.addEventListener('load', () => sizePhotoCard(card), { once: true });
+      if (image.complete) sizePhotoCard(card);
+
       const open = () => openLightbox(Number(card.dataset.index));
       card.addEventListener('click', open);
       card.addEventListener('keydown', event => {
