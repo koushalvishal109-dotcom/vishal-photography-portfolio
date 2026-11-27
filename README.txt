@@ -3,21 +3,16 @@ CHOTU FRAME JOURNAL
 
 A personal photography journal by Vishal, also known as Chotu.
 
-This is a standalone static website built around the supplied 30-photo set.
-It has no website-builder dependency, no paid front-end library, no external
-fonts and no third-party JavaScript.
+This standalone site is built around the supplied 30-photo set. It has no
+website-builder dependency, paid front-end library, external fonts or
+third-party JavaScript.
 
 GALLERY IMAGES
 --------------
-The original WebP photographs are kept at the repository root.
-A GitHub Actions workflow creates smaller WebP derivatives in /thumbnails
-for the scrolling archive and collection covers. The original files are
-still used in the full-size photograph viewer.
-
-PREVIEW
--------
-Open index.html in a modern browser. The gallery, filters and image viewer
-work locally without an internet connection after thumbnails are generated.
+Original WebP photographs stay at the repository root.
+A GitHub Actions workflow generates smaller WebP derivatives in /thumbnails
+for the scrolling archive and collection covers. The originals remain
+available in the full-size photograph viewer.
 
 EDITING
 -------
